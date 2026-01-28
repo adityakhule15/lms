@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Certificate of Completion</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .certificate-container {
+            width: 29.7cm;
+            height: 21cm;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .certificate-border {
+            width: 100%;
+            height: 100%;
+            border: 15px solid gold;
+            padding: 40px;
+            background: white;
+            position: relative;
+        }
+        
+        .certificate-content {
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        
+        .certificate-of {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        
+        .completion {
+            font-size: 48px;
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+        
+        .presented-to {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .student-name {
+            font-size: 48px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 30px;
+            padding: 10px 40px;
+            border-bottom: 3px solid gold;
+            display: inline-block;
+        }
+        
+        .course-info {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 10px;
+            max-width: 80%;
+        }
+        
+        .course-title {
+            font-size: 28px;
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .details {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 50px;
+        }
+        
+        .detail-item {
+            text-align: center;
+        }
+        
+        .detail-label {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .certificate-id {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 60px;
+            padding: 0 50px;
+        }
+        
+        .signature {
+            text-align: center;
+        }
+        
+        .signature-line {
+            width: 200px;
+            border-top: 2px solid #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .instructor-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .instructor-title {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .date {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 120px;
+            color: rgba(118, 75, 162, 0.1);
+            font-weight: bold;
+            z-index: 1;
+            white-space: nowrap;
+        }
+        
+        .seal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            width: 100px;
+            height: 100px;
+            border: 3px solid gold;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            font-size: 12px;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate-container">
+        <div class="watermark">CERTIFICATE OF COMPLETION</div>
+        <div class="certificate-border">
+            <div class="seal">
+                <div>
+                    <strong>LMS</strong><br>
+                    Certified
+                </div>
+            </div>
+            
+            <div class="certificate-content">
+                <div class="logo">Learning Management System</div>
+                <div class="title">Certificate</div>
+                <div class="subtitle">of Achievement</div>
+                
+                <div class="certificate-of">This certifies that</div>
+                
+                <div class="student-name">{{ student.get_full_name|default:student.username }}</div>
+                
+                <div class="presented-to">has successfully completed the course</div>
+                
+                <div class="course-title">{{ course.title }}</div>
+                
+                <div class="course-info">
+                    {{ course.description|truncatewords:30 }}
+                </div>
+                
+                <div class="details">
+                    <div class="detail-item">
+                        <div class="detail-label">Date Issued</div>
+                        <div class="detail-value">{{ issue_date }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Course Duration</div>
+                        <div class="detail-value">{{ course.duration_hours|default:"40" }} hours</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Instructor</div>
+                        <div class="detail-value">{{ course.instructor.get_full_name|default:course.instructor.username }}</div>
+                    </div>
+                </div>
+                
+                <div class="signatures">
+                    <div class="signature">
+                        <div class="signature-line"></div>
+                        <div class="instructor-name">{{ course.instructor.get_full_name|default:course.instructor.username }}</div>
+                        <div class="instructor-title">Course Instructor</div>
+                    </div>
+                    
+                    <div class="signature">
+                        <div class="signature-line"></div>
+                        <div class="instructor-name">LMS Administrator</div>
+                        <div class="instructor-title">Learning Management System</div>
+                        <div class="date">{{ issue_date }}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certificate-id">
+                Certificate ID: {{ certificate_id }}<br>
+                Verified at: lms.example.com/verify/{{ certificate_id }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
