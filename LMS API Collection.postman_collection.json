@@ -1,0 +1,1148 @@
+{
+  "info": {
+    "_postman_id": "0b2972aa-0bfd-41fc-a676-bda28c83c0c5",
+    "name": "LMS API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "20902980"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "User Registration",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\",\n  \"password2\": \"password123\",\n  \"first_name\": \"Test\",\n  \"last_name\": \"User\",\n  \"role\": \"student\"\n}"
+            },
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/register/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "register",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"aditya\",\n  \"password\": \"Aditya15@\"\n}"
+            },
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/login/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "login",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "Get All Courses",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/courses/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "courses",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Course",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/courses/1/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "courses",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Course (Instructor Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"New Course\",\n  \"description\": \"Course Description\",\n  \"category\": \"Programming\",\n  \"level\": \"Beginner\",\n  \"duration_hours\": 10,\n  \"price\": 0,\n  \"is_published\": true\n}"
+            },
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/courses/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "courses",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Course (Instructor Only)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Course Title\",\n  \"description\": \"Updated description\",\n  \"is_published\": true\n}"
+            },
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/courses/1/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "courses",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Course (Instructor Only)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/courses/1/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "courses",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Enroll in Course",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/courses/1/enroll/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "courses",
+                "1",
+                "enroll",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Unenroll from Course",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/courses/1/unenroll/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "courses",
+                "1",
+                "unenroll",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Enrolled Courses",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/courses/enrolled_courses/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "courses",
+                "enrolled_courses",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Available Courses",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/courses/available_courses/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "courses",
+                "available_courses",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Lessons",
+      "item": [
+        {
+          "name": "Get Lesson",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/lessons/1/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "lessons",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Lesson (Instructor Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"course\": 1,\n  \"title\": \"New Lesson\",\n  \"description\": \"Lesson description\",\n  \"content_type\": \"text\",\n  \"content\": \"Lesson content here\",\n  \"order\": 1,\n  \"duration_minutes\": 30\n}"
+            },
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/lessons/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "lessons",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Lesson (Instructor Only)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Lesson Title\"\n}"
+            },
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/lessons/1/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "lessons",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Lesson (Instructor Only)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/lessons/1/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "lessons",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Mark Lesson Complete",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/lessons/1/mark_complete/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "lessons",
+                "1",
+                "mark_complete",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Progress Tracking",
+      "item": [
+        {
+          "name": "Get Course Progress",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/course-progress/1/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "course-progress",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Overall Progress",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/course-progress/overall/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "course-progress",
+                "overall",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Lesson Progress Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/lesson-progress/1/details/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "lesson-progress",
+                "1",
+                "details",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reset Lesson Progress",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/lesson-progress/1/reset/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "lesson-progress",
+                "1",
+                "reset",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Enrollments",
+      "item": [
+        {
+          "name": "Get Enrollments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/enrollments/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "enrollments",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Enrollment",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/enrollments/1/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "enrollments",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Enrollment Progress",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/enrollments/1/progress/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "enrollments",
+                "1",
+                "progress",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Enrollment Certificate",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/enrollments/1/certificate/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "enrollments",
+                "1",
+                "certificate",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Quizzes",
+      "item": [
+        {
+          "name": "Get Quiz",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/quizzes/1/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "quizzes",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Quiz (Instructor Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lesson\": 1,\n  \"title\": \"Quiz 1\",\n  \"description\": \"Test your knowledge\",\n  \"passing_score\": 70,\n  \"is_active\": true\n}"
+            },
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/quizzes/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "quizzes",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Question (Instructor Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quiz\": 1,\n  \"question_type\": \"mcq\",\n  \"question_text\": \"What is 2+2?\",\n  \"options\": [\"3\", \"4\", \"5\", \"6\"],\n  \"correct_answer\": \"4\",\n  \"points\": 1,\n  \"order\": 1\n}"
+            },
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/questions/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "questions",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Submit Quiz Attempt",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"answers\": [\n    {\n      \"question_id\": 1,\n      \"answer\": \"4\"\n    },\n    {\n      \"question_id\": 2,\n      \"answer\": \"true\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/quizzes/1/attempt/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "quizzes",
+                "1",
+                "attempt",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Quiz Attempt History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/quiz-attempts/quiz/1/history/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "quiz-attempts",
+                "quiz",
+                "1",
+                "history",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Certificates",
+      "item": [
+        {
+          "name": "Get Certificates",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/certificates/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "certificates",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Certificate",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/certificates/1/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "certificates",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Download Certificate",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/certificates/1/download/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "certificates",
+                "1",
+                "download",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Certificate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/certificates/verify/CERT-ABC123DEF456/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "certificates",
+                "verify",
+                "CERT-ABC123DEF456",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Regenerate Certificate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"course_id\": 1\n}"
+            },
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/certificates/regenerate/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "certificates",
+                "regenerate",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Dashboards",
+      "item": [
+        {
+          "name": "Get Student Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/dashboard/student/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "student",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Instructor Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/dashboard/instructor/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "instructor",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Get Course Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/courses/1/analytics/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "courses",
+                "1",
+                "analytics",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Student Progress Reports",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/student-progress-reports/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "student-progress-reports",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Student Progress Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{instructor_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/student-progress-reports/1/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "student-progress-reports",
+                "1",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Activity",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "https://lms-1rkz.onrender.com/api/activity/",
+              "host": [
+                "https://lms-1rkz.onrender.com"
+              ],
+              "path": [
+                "api",
+                "activity",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://lms-1rkz.onrender.com"
+    },
+    {
+      "key": "access_token",
+      "value": "your_jwt_token_here"
+    },
+    {
+      "key": "instructor_token",
+      "value": "instructor_jwt_token_here"
+    }
+  ]
+}
