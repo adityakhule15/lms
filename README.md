@@ -199,14 +199,41 @@ Django>=4.2
 ## 📁 Project Structure (Simplified)
 
 ```
-lms/
-├── accounts/        # Authentication & roles
-├── courses/         # Courses & lessons
-├── quizzes/         # Quiz & attempts
-├── progress/        # Lesson completion & tracking
-├── certificates/    # Certificate generation
-├── lms/             # Project settings
-└── manage.py
+lms/                                # Root project directory
+│
+├── lms/                            # Project configuration (settings)
+│   ├── __init__.py
+│   ├── asgi.py                     # ASGI config (async / deployment)
+│   ├── settings.py                 # Main Django settings
+│   ├── urls.py                     # Root URL configuration
+│   └── wsgi.py                     # WSGI config (deployment)
+│
+├── lmsapp/                         # Main LMS application
+│   ├── __pycache__/
+│   │
+│   ├── migrations/                # Database migrations
+│   │   └── __init__.py
+│   │
+│   ├── templates/                 # HTML templates (optional)
+│   │
+│   ├── __init__.py
+│   ├── admin.py                   # Admin panel configuration
+│   ├── apps.py                    # App config
+│   ├── models.py                  # Models (Course, Lesson, Enrollment, Quiz, Certificate)
+│   ├── serializers.py             # DRF serializers
+│   ├── views.py                   # API views / business logic
+│   └── urls.py                    # App-level API routes
+│
+├── static/                         # Static files (CSS, JS, images)
+│
+├── db.sqlite3                     # SQLite DB (development)
+│
+├── manage.py                      # Django entry point
+│
+├── requirements.txt               # Project dependencies
+│
+└── README.md                      # Project documentation
+
 ```
 
 ---
